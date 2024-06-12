@@ -1,1 +1,22 @@
-{"message":"Invalid API key","hint":"Double check your Supabase `anon` or `service_role` API key."}
+{
+  "tables": [
+    {
+      "name": "users",
+      "columns": [
+        { "name": "id", "type": "uuid", "primary_key": true },
+        { "name": "email", "type": "text" },
+        { "name": "created_at", "type": "timestamp" }
+      ]
+    },
+    {
+      "name": "profiles",
+      "columns": [
+        { "name": "id", "type": "uuid", "primary_key": true },
+        { "name": "user_id", "type": "uuid", "foreign_key": "users.id" },
+        { "name": "username", "type": "text" },
+        { "name": "bio", "type": "text" },
+        { "name": "created_at", "type": "timestamp" }
+      ]
+    }
+  ]
+}
