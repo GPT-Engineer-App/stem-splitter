@@ -13,9 +13,13 @@ const WaveformPage = () => {
         progressColor: "#ff5500",
       });
 
-      wavesurfer.load("path/to/your/audio/file.mp3");
+      wavesurfer.load("/path/to/your/audio/file.mp3");
+
+      return () => {
+        wavesurfer.destroy();
+      };
     }
-  }, []);
+  }, [waveformRef]);
 
   return <Box ref={waveformRef} width="100%" height="200px" />;
 };
