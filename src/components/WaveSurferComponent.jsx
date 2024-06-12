@@ -1,27 +1,25 @@
 import React, { useEffect, useRef } from "react";
 import WaveSurfer from "wavesurfer.js";
-import { Box } from "@chakra-ui/react";
 
 const WaveSurferComponent = ({ audioUrl }) => {
   const waveformRef = useRef(null);
 
   useEffect(() => {
-    if (waveformRef.current) {
+    if (waveformRef.current && audioUrl) {
       const wavesurfer = WaveSurfer.create({
         container: waveformRef.current,
         waveColor: "#ddd",
-        progressColor: "#ff5500",
+        progressColor: "#4A90E2",
+        height: 200,
       });
 
       wavesurfer.load(audioUrl);
 
-      return () => {
-        wavesurfer.destroy();
-      };
+      return () => wavesurfer.destroy();
     }
   }, [audioUrl]);
 
-  return <Box ref={waveformRef} width="100%" height="200px" />;
+  return <div ref={waveformRef} />;
 };
 
 export default WaveSurferComponent;

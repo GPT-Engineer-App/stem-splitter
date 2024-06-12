@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import { Container, VStack, Text, FormControl, FormLabel, Input, Select, Button, Box, Link, useToast } from "@chakra-ui/react";
 import { Link as RouterLink } from "react-router-dom";
 import { FaUpload } from "react-icons/fa";
+import WaveSurferComponent from "../components/WaveSurferComponent";
 
 const Index = () => {
   const [file, setFile] = useState(null);
@@ -85,7 +86,7 @@ const Index = () => {
             <option value="5stems">5 Stems</option>
           </Select>
         </FormControl>
-        <Button as={RouterLink} to="/waveform" leftIcon={<FaUpload />} colorScheme="teal" size="lg">
+        <Button type="submit" leftIcon={<FaUpload />} colorScheme="teal" size="lg">
           Upload and Separate
         </Button>
       </VStack>
@@ -99,6 +100,9 @@ const Index = () => {
               {stem.name}
             </Link>
           ))}
+          <Box mt={8} w="100%" h="200px">
+            <WaveSurferComponent audioUrl={stems[0].url} />
+          </Box>
         </Box>
       )}
     </Container>
